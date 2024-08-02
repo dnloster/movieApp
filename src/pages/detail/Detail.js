@@ -47,9 +47,7 @@ const Detail = () => {
                     <div
                         className="banner"
                         style={{
-                            backgroundImage: `url(${apiConfig.originalImage(
-                                item.backdrop_path || item.poster_path
-                            )})`,
+                            backgroundImage: `url(${apiConfig.originalImage(item.backdrop_path || item.poster_path)})`,
                         }}
                     ></div>
                     <div className="mb-3 movie-content container">
@@ -66,9 +64,7 @@ const Detail = () => {
                         <div className="movie-content__info">
                             <h1 className="title">{item.title || item.name}</h1>
                             <p className="overview">{item.overview}</p>
-                            <p className="release">
-                                Ngày phát hành: {item.release_date}
-                            </p>
+                            <p className="release">Ngày phát hành: {item.release_date}</p>
                             <div className="genres">
                                 {item.genres &&
                                     item.genres.slice(0, 5).map((genre, i) => (
@@ -78,13 +74,10 @@ const Detail = () => {
                                     ))}
                             </div>
                             <p className="vote">
-                                Đánh giá trung bình: {item.vote_average} (
-                                {item.vote_count} lượt)
+                                Đánh giá trung bình: {item.vote_average} ({item.vote_count} lượt)
                             </p>
                             <div className="button__controls">
-                                <OutlineButton onClick={notify}>
-                                    Thêm vào yêu thích
-                                </OutlineButton>
+                                <OutlineButton onClick={notify}>Thêm vào yêu thích</OutlineButton>
                                 <ToastContainer />
                             </div>
                         </div>
@@ -95,16 +88,15 @@ const Detail = () => {
                                 <iframe
                                     src={
                                         item.episode_run_time
-                                            ? `https://www.2embed.org/embed/${
-                                                  item.id
-                                              }&s=${
+                                            ? `https://www.2embed.cc/embed/${item.id}&s=${
                                                   item.seasons[0].season_number
                                               }&e=${1}`
-                                            : `https://www.2embed.org/embed/${item.id}`
+                                            : `https://www.2embed.cc/embed/${item.id}`
                                     }
                                     width="100%"
                                     height="100%"
                                     title="Video"
+                                    allow="fullscreen"
                                 ></iframe>
                             </div>
                         </div>
@@ -120,11 +112,7 @@ const Detail = () => {
                             <div className="section__header mb-2">
                                 <h2>Phim tương tự</h2>
                             </div>
-                            <MovieList
-                                category={category}
-                                type="similar"
-                                id={item.id}
-                            />
+                            <MovieList category={category} type="similar" id={item.id} />
                         </div>
                     </div>
                 </>
